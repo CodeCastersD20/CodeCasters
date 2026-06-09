@@ -1,9 +1,0 @@
-{
-  "name": "codecasters",
-  "type": "javascript",
-  "main": "src/index.ts",
-  "build": {
-    "command": "npm run build",
-    "cwd": "."
-  }
-}
