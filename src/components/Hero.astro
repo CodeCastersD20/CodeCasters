@@ -22,9 +22,29 @@
       Code<span class="text-brand-green">Casters</span>
     </h1>
     
-    <p class="text-xl md:text-2xl text-brand-green font-mono mb-8 opacity-90">
-      &gt; soluciones_limpias, eficientes y escalables_
-    </p>
+    <div class="flex justify-center mb-8">
+      <p class="text-xl md:text-2xl text-brand-green font-mono opacity-90 overflow-hidden whitespace-nowrap border-r-4 border-brand-green w-0 animate-typewriter">
+        &gt; soluciones_limpias, eficientes y escalables_
+      </p>
+    </div>
+
+    <style>
+      .animate-typewriter {
+        animation: 
+          typing 3.5s steps(45, end) forwards,
+          blink-caret .75s step-end infinite;
+      }
+
+      @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
+      }
+
+      @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: #4ade80; }
+      }
+    </style>
     
     <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-10">
       Ingenieros de la Universidad Tecnológica de Hermosillo. Forjando el futuro del software con precisión técnica y un toque de magia arcana.
