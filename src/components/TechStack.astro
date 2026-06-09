@@ -1,0 +1,53 @@
+---
+const techGroups = [
+  {
+    title: "Frontend",
+    techs: ["React", "TypeScript", "Vite", "Next.js", "Tailwind CSS"]
+  },
+  {
+    title: "Backend",
+    techs: ["NestJS", "Node.js", "TypeScript", "Python"]
+  },
+  {
+    title: "Bases de Datos & ORM",
+    techs: ["PostgreSQL", "Supabase", "Prisma ORM", "MongoDB", "MariaDB"]
+  },
+  {
+    title: "DevOps & Tooling",
+    techs: ["Docker", "Git", "GitHub Actions", "ESLint", "Prettier", "Linux (Arch/Ubuntu)"]
+  }
+];
+---
+<section class="py-24 bg-black border-y border-white/5">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold mb-4">Nuestro Arsenal Tecnológico</h2>
+      <p class="text-gray-400">Hechizos y herramientas que dominamos para invocar soluciones de alto impacto.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {techGroups.map(group => (
+        <div class="p-6 rounded-2xl border border-white/5 bg-gradient-to-b from-white/5 to-transparent">
+          <h3 class="text-brand-green font-mono text-sm font-bold mb-6 tracking-widest uppercase">{group.title}</h3>
+          <ul class="space-y-3">
+            {group.techs.map(tech => (
+              <li class="text-gray-300 flex items-center gap-2 group">
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-purple/40 group-hover:bg-brand-purple transition-colors"></span>
+                {tech}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+    
+    <div class="mt-20 flex flex-wrap justify-center gap-6 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+        <!-- We could add the actual SVG icons here for a more "professional" look than just badges -->
+        <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TS" />
+        <img src="https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white" alt="Nest" />
+        <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="React" />
+        <img src="https://img.shields.io/badge/Supabase-181818?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase" />
+        <img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />
+    </div>
+  </div>
+</section>

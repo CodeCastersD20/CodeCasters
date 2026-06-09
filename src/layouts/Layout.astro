@@ -1,0 +1,63 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "CodeCasters - Soluciones limpias, eficientes y escalables. Equipo de ingeniería especializado en desarrollo web moderno." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<!-- Google Fonts: Inter for UI and JetBrains Mono for a tech feel -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+	</head>
+	<body class="bg-black text-gray-200 selection:bg-brand-green/30 selection:text-brand-green">
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--brand-green: #4ade80;
+		--brand-purple: #a855f7;
+		--brand-blue: #3b82f6;
+		--brand-red: #ef4444;
+	}
+	
+	html {
+		font-family: 'Inter', system-ui, sans-serif;
+		scroll-behavior: smooth;
+	}
+
+	code {
+		font-family: 'JetBrains Mono', Menlo, Monaco, Lucida Console, Liberation Mono,
+			DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+	}
+
+	/* Custom Scrollbar */
+	::-webkit-scrollbar {
+		width: 8px;
+	}
+	::-webkit-scrollbar-track {
+		background: #000;
+	}
+	::-webkit-scrollbar-thumb {
+		background: #1f2937;
+		border-radius: 4px;
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background: #374151;
+	}
+</style>

@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+---
+
+<Layout title={`${name} | CodeCasters`}>
+  <main class="min-h-screen flex flex-col items-center justify-center p-4 text-center">
+    <div class="absolute inset-0 z-0 overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-purple/10 blur-[120px] rounded-full"></div>
+    </div>
+
+    <div class="relative z-10">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white">
+            {name}
+        </h1>
+        <div class="h-1 w-24 bg-brand-green mx-auto mb-8"></div>
+        
+        <p class="text-xl font-mono text-brand-green mb-12 animate-pulse">
+            &gt; STATUS: EN_CONSTRUCCION_
+        </p>
+
+        <p class="text-gray-400 max-w-md mx-auto mb-10 leading-relaxed">
+            Este miembro del gremio está forjando su espacio personal. Vuelve pronto para ver sus artefactos y hechizos de código.
+        </p>
+
+        <a href="/" class="inline-flex items-center gap-2 px-6 py-3 border border-white/10 rounded-full text-sm font-bold hover:bg-white hover:text-black transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            Volver al Inicio
+        </a>
+    </div>
+  </main>
+</Layout>

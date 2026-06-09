@@ -1,0 +1,79 @@
+---
+const values = [
+  {
+    title: "Código limpio sobre código rápido",
+    desc: "Escribimos pensando en quien lo lee después, garantizando mantenibilidad.",
+    icon: "✨"
+  },
+  {
+    title: "Soluciones al problema real",
+    desc: "Evitamos el over-engineering innecesario; eficacia pura.",
+    icon: "🎯"
+  },
+  {
+    title: "Colaboración abierta",
+    desc: "Revisamos, comentamos y aprendemos en equipo constantemente.",
+    icon: "🤝"
+  },
+  {
+    title: "Tecnología al servicio del producto",
+    desc: "Elegimos el stack que mejor resuelve, no el más popular.",
+    icon: "🛠️"
+  }
+];
+
+const deliverables = [
+  "Gestión ágil (Kanban & Sprints)",
+  "Documentación técnica completa",
+  "Código fuente auditable y semántico",
+  "Garantía de calidad y testing"
+];
+---
+<section id="nosotros" class="py-24 bg-zinc-950">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="grid md:grid-cols-2 gap-16 items-start">
+      <div>
+        <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+          <span class="text-brand-green font-mono">01.</span> ¿Quiénes somos?
+        </h2>
+        <p class="text-gray-400 leading-relaxed mb-6">
+          CodeCasters es un equipo de desarrollo de software especializado en aplicaciones web modernas. Priorizamos código limpio, arquitecturas mantenibles y soluciones eficientes adaptadas a cada problema. 
+        </p>
+        <p class="text-gray-400 leading-relaxed">
+          Aunque nuestro fuerte es el desarrollo web, también construimos aplicaciones de escritorio, móviles y herramientas de propósito general cuando el proyecto lo requiere.
+        </p>
+        
+        <div class="mt-10 p-6 bg-brand-purple/5 border border-brand-purple/20 rounded-xl">
+          <h3 class="text-brand-purple font-bold mb-4">Lo que entregamos:</h3>
+          <ul class="space-y-3">
+            {deliverables.map(item => (
+              <li class="flex items-center gap-3 text-gray-300">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-brand-green">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-3xl font-bold mb-8">Nuestra Filosofía</h2>
+        <div class="grid gap-6">
+          {values.map(val => (
+            <div class="group p-5 bg-white/5 border border-white/10 rounded-lg hover:border-brand-green/30 transition-colors">
+              <div class="flex gap-4">
+                <span class="text-2xl">{val.icon}</span>
+                <div>
+                  <h4 class="font-bold text-gray-100 mb-1 group-hover:text-brand-green transition-colors">{val.title}</h4>
+                  <p class="text-sm text-gray-400">{val.desc}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,42 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+	</head>
+	<body class="bg-[#0a0a0c] text-slate-200 selection:bg-sdrx-sky/30 selection:text-sdrx-sky">
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--sdrx-sky: #00d4ff;
+		--sdrx-purple: #bc13fe;
+		--sdrx-red: #ff3131;
+	}
+	
+	html {
+		font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+		scroll-behavior: smooth;
+	}
+
+	code {
+		font-family: 'JetBrains Mono', monospace;
+	}
+</style>
