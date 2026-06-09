@@ -1,6 +1,21 @@
 ---
 ---
-<section class="relative min-h-[80vh] flex flex-col items-center justify-center overflow-hidden py-20 px-4">
+<section class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden py-20 px-4">
+  <!-- Top Navigation -->
+  <nav class="fixed top-0 left-0 w-full z-50 bg-black/30 backdrop-blur-lg border-b border-white/5 p-4 md:p-6">
+    <div class="max-w-7xl mx-auto flex justify-between items-center w-full">
+      <div class="flex items-center gap-3 group cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <img src="/assets/CodeCasters.png" alt="CodeCasters Logo" width="40" class="drop-shadow-[0_0_8px_rgba(74,222,128,0.2)] group-hover:scale-110 transition-transform md:w-[45px]" />
+        <span class="font-bold tracking-tighter text-lg md:text-xl text-white hidden sm:block">Code<span class="text-brand-green">Casters</span></span>
+      </div>
+      <div class="flex gap-4 md:gap-8">
+        <a href="#nosotros" class="text-[10px] md:text-sm font-medium text-gray-400 hover:text-brand-green transition-colors uppercase tracking-widest">Gremio</a>
+        <a href="#equipo" class="text-[10px] md:text-sm font-medium text-gray-400 hover:text-brand-green transition-colors uppercase tracking-widest">Miembros</a>
+        <a href="#contacto" class="text-[10px] md:text-sm font-medium text-gray-400 hover:text-brand-green transition-colors uppercase tracking-widest">Contacto</a>
+      </div>
+    </div>
+  </nav>
+
   <!-- Background Effects -->
   <div class="absolute inset-0 z-0">
     <div class="absolute top-1/4 -left-20 w-96 h-96 bg-brand-purple/20 rounded-full blur-[120px]"></div>
@@ -8,10 +23,10 @@
   </div>
 
   <div class="relative z-10 text-center max-w-4xl mx-auto">
-    <!-- Logo Placeholder / Icon -->
-    <div class="mb-8 inline-block relative">
-      <div class="absolute inset-0 bg-brand-green blur-2xl opacity-20 animate-pulse"></div>
-      <svg width="120" height="120" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+    <!-- Restored D20 SVG -->
+    <div class="mb-8 inline-block relative group">
+      <div class="absolute inset-0 bg-brand-green blur-3xl opacity-10 group-hover:opacity-30 transition-opacity animate-pulse"></div>
+      <svg width="120" height="120" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10 drop-shadow-[0_0_15px_rgba(74,222,128,0.2)] group-hover:scale-105 transition-transform duration-500">
         <path d="M50 5L10 25V75L50 95L90 75V25L50 5Z" stroke="currentColor" stroke-width="2" class="text-brand-green" />
         <path d="M50 20L25 32.5V67.5L50 80L75 67.5V32.5L50 20Z" stroke="currentColor" stroke-width="1" class="text-brand-purple" />
         <text x="50" y="58" text-anchor="middle" font-family="monospace" font-size="24" fill="currentColor" class="text-brand-green font-bold">20</text>
