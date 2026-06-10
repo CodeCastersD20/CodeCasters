@@ -11,14 +11,14 @@ const REDDIT_USERNAME = import.meta.env.PUBLIC_REDDIT_USERNAME || 'sadrach34';
 
 const projects = [
   {
-    title: "SDRX-pax",
+    title: "Pax",
     desc: "Instalador de paquetes interactivo en TUI para Arch Linux. Combina pacman y yay (AUR) en una única interfaz fzf ultrarrápida. Carga en <50ms usando Smart Caching.",
-    tech: ["Rust", "fzf", "Pacman", "Yay"],
+    tech: ["Rust", "fzf", "Yay"],
     link: "https://github.com/Sadrach34/SDRX-pax",
     color: "sdrx-sky"
   },
   {
-    title: "SDRX-Beat",
+    title: "Beat",
     desc: "Reproductor de música para terminal (TUI) basado en mpv. Soporta archivos locales y streaming de YouTube/radio por internet sin interfaz gráfica. Gestión de sesiones y descargas integradas.",
     tech: ["Python", "mpv", "yt-dlp", "Curses"],
     link: "https://github.com/Sadrach34/SDRX-Beat",
@@ -45,22 +45,95 @@ const games = ["Elden Ring", "Warframe", "Balatro", "The Binding of Isaac", "Min
 const hyperfixations = ["Arch Linux", "Hyprland", "TUI", "Web Development", "Música", "Programación"];
 const playlistUrl = "https://youtube.com/playlist?list=PLXuOK4h_ZtSbGV1FsT_nC0TRlf2EmwXEE&si=a_KVNAgiHmzAiMlM";
 
-const blogPosts = []; // Vacío por ahora
+const blogPosts = [
+    {
+      date: "2026-06-09",
+      title: "Primera version de la pagina de CodeCasters y SDRX",
+      snippet: `La verdad, no pensé que llegaríamos a lanzar la página ni que esto se fuera a hacer realidad; es prácticamente un sueño cumplido. Este es el primer mensaje de una mini bitácora que posiblemente estaré actualizando cada cierto tiempo. No creo usarla demasiado porque no soy muy de escribir, pero quiero que quede el registro del primer día, de la primera vez que abrimos este sitio. Quién sabe si algún día desaparecerá o si volverá a cambiar, pero por ahora quiero que Codecasters sea una realidad.
+                    \nUn pequeño detalle: esta sección es más que nada un apartado sobre mí. Solo sobre mí. Cada miembro del equipo tiene su parte y ya después veremos cómo mejorar la página, al menos por el lado de la landing page del equipo. Por ahora, creo que con esto es suficiente. Como dato curioso: la sección de "proyecto en mente" todavía no funciona, ¡así que después lo arreglo!`
+    },
+];
+
+const secretPost = {
+  date: "2026-06-09",
+  title: "///SISTEMA.CORROMPIDO///",
+  snippet: `encontraste algo que no debías ver. o tal vez lo que debías ver todo el tiempo. la verdad es relativa. los secretos son apenas ilusiones esperando a ser descubiertos. ¿qué es la realidad sino un conjunto de perspectivas? tal vez estés en el sitio correcto, o tal vez estés exactamente donde no deberías estar.\n\n//ERROR_404_CONSCIOUSNESS.exe\n//status: ONLINE\n//warning: irreversible`
+};
 ---
 
 <SDRXLayout title="SDRX | Digital Runtime Experience">
-  <main class="min-h-screen relative pb-20 overflow-x-hidden">
-    <!-- Navbar -->
-    <nav class="p-6 flex flex-col sm:flex-row justify-between items-center max-w-7xl mx-auto relative z-10 gap-4">
-      <a href="/" class="text-sm font-mono text-slate-500 hover:text-sdrx-sky transition-colors flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-        Volver a CodeCasters
-      </a>
-      <div class="px-4 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-mono text-sdrx-sky">
-        v1.6.0-stable
-      </div>
-    </nav>
+  <!-- Navbar -->
+  <nav class="p-4 md:p-6 fixed top-0 left-0 w-full z-50 bg-[#0a0a0c]/80 backdrop-blur-lg border-b border-white/5">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+          <!-- Left: Back link -->
+          <a href="/" class="text-xs md:text-sm font-mono text-slate-500 hover:text-sdrx-sky transition-colors flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            <span data-i18n="sdrx.backLink">Volver a CodeCasters</span>
+          </a>
 
+          <!-- Center: Section links + Version -->
+          <div class="flex items-center gap-4 md:gap-6 text-[10px] md:text-xs font-mono uppercase tracking-widest">
+            <a href="#sdrx-dots" class="text-slate-400 hover:text-sdrx-sky transition-colors">SDRX-dots</a>
+            <a href="#terminal-projects" class="text-slate-400 hover:text-sdrx-sky transition-colors">Terminal</a>
+            <a href="#personal" class="text-slate-400 hover:text-sdrx-sky transition-colors">Personal</a>
+            <div class="text-slate-600">v1.6.0</div>
+          </div>
+
+          <!-- Right: Language selector -->
+          <div class="flex gap-2 bg-white/5 border border-white/10 rounded-full p-1">
+            <button
+              data-lang="es"
+              class="px-2 py-0.5 md:px-3 md:py-1 text-[10px] md:text-xs font-bold uppercase rounded-full transition-all active"
+              style="background-color: #00d4ff; color: #0a0a0c;"
+            >
+              ES
+            </button>
+            <button
+              data-lang="en"
+              class="px-2 py-0.5 md:px-3 md:py-1 text-[10px] md:text-xs font-bold uppercase rounded-full transition-all"
+              style="color: #64748b;"
+            >
+              EN
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Language switcher script -->
+      <script is:inline>
+        function initSdrxLangSwitcher() {
+          const buttons = document.querySelectorAll('[data-lang]');
+          const currentLang = localStorage.getItem('site-language') || 'es';
+
+          buttons.forEach(btn => {
+            const lang = btn.getAttribute('data-lang');
+            if (lang === currentLang) {
+              btn.classList.add('active');
+              btn.style.backgroundColor = '#00d4ff';
+              btn.style.color = '#0a0a0c';
+            } else {
+              btn.classList.remove('active');
+              btn.style.backgroundColor = 'transparent';
+              btn.style.color = '#64748b';
+            }
+
+            btn.addEventListener('click', () => {
+              localStorage.setItem('site-language', lang);
+              location.reload();
+            });
+          });
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initSdrxLangSwitcher);
+        } else {
+          initSdrxLangSwitcher();
+        }
+      </script>
+  </nav>
+
+  <main class="min-h-screen relative pb-20 pt-24 md:pt-28 overflow-x-hidden">
     <!-- Header / Bio -->
     <section class="pt-10 md:pt-20 pb-20 px-4 relative">
       <div class="max-w-6xl mx-auto">
@@ -77,6 +150,10 @@ const blogPosts = []; // Vacío por ahora
                 Soy <span class="text-white font-bold tracking-tight">Sadrach Juan Diego Garcia Flores</span> tengo <span class="text-sdrx-purple font-mono font-bold inline-block min-w-[12ch]" id="age-counter">20.00000000</span>, <span class="text-sdrx-purple italic font-bold">Ingeniero en software multiplataforma</span>.
             </p>
             
+            <p class="text-slate-300 text-xl md:text-2xl leading-relaxed max-w-3xl mb-10">
+                Trabajando en <span class="text-white font-bold tracking-tight"><a href="https://kngura.com" target="_blank">Kngura</a></span>
+            </p>
+
             <div class="flex flex-wrap gap-4">
                 {socialLinks.map(s => (
                     <a href={s.url} target="_blank" class={`px-4 py-2 bg-white/5 border border-white/10 rounded-xl hover:border-sdrx-purple/50 hover:bg-sdrx-purple/10 transition-all text-xs font-mono uppercase tracking-widest text-slate-400 hover:text-white`}>
@@ -122,7 +199,7 @@ const blogPosts = []; // Vacío por ahora
     </section>
 
     <!-- SDRX-dots Spotlight -->
-    <section class="py-10 md:py-24 px-4 relative z-10 bg-white/[0.01] border-y border-white/5 shadow-[inset_0_0_50px_rgba(188,19,254,0.05)]">
+    <section id="sdrx-dots" class="py-10 md:py-24 px-4 relative z-10 bg-white/[0.01] border-y border-white/5 shadow-[inset_0_0_50px_rgba(188,19,254,0.05)]">
       <div class="max-w-6xl mx-auto">
         <div class="grid lg:grid-cols-5 gap-12 items-center mb-20">
           <div class="lg:col-span-2 text-center lg:text-left">
@@ -168,7 +245,7 @@ const blogPosts = []; // Vacío por ahora
           
           <div class="lg:col-span-3 grid grid-cols-2 gap-4">
              {screenshots.map((s, i) => (
-                <div class={`group relative aspect-video bg-white/5 border border-white/10 rounded-2xl overflow-hidden shadow-2xl ${i === 1 ? 'mt-8' : i === 2 ? '-mt-8' : ''}`}>
+                <div class={`group relative aspect-video bg-white/5 border border-white/10 rounded-2xl overflow-hidden shadow-2xl cursor-pointer ${i === 1 ? 'mt-8' : i === 2 ? '-mt-8' : ''}`} onclick={`openLightbox('${s.src}', '${s.title}')`}>
                     <img src={s.src} alt={s.title} class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
                         <span class="text-xs font-mono text-sdrx-purple font-bold tracking-widest">{s.title}</span>
@@ -176,12 +253,23 @@ const blogPosts = []; // Vacío por ahora
                 </div>
              ))}
           </div>
+
+          <!-- Lightbox Modal -->
+          <div id="lightbox" class="fixed inset-0 bg-black/80 backdrop-blur-sm opacity-0 invisible transition-all duration-300 z-50 flex items-center justify-center p-4" onclick="closeLightbox(event)">
+            <div class="relative w-full h-full max-w-4xl max-h-[90vh] transform scale-75 opacity-0 transition-all duration-300" id="lightbox-content">
+              <img id="lightbox-img" src="" alt="" class="w-full h-full object-contain rounded-2xl" />
+              <button onclick="closeLightbox()" class="absolute top-4 right-4 p-2 bg-sdrx-red/20 hover:bg-sdrx-red/40 rounded-full transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M18 6l-12 12"></path><path d="M6 6l12 12"></path></svg>
+              </button>
+              <span id="lightbox-title" class="absolute bottom-4 left-4 text-xs font-mono text-sdrx-purple font-bold tracking-widest bg-black/50 px-3 py-1 rounded-full"></span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Terminal Projects (TUI) -->
-    <section class="py-24 px-4 relative z-10">
+    <section id="terminal-projects" class="py-24 px-4 relative z-10">
       <div class="max-w-6xl mx-auto">
         <div class="mb-16 text-center lg:text-left flex flex-col lg:flex-row justify-between items-end gap-6">
           <div>
@@ -221,7 +309,7 @@ const blogPosts = []; // Vacío por ahora
     </section>
 
     <!-- Personal Grids -->
-    <section class="py-24 px-4 bg-white/[0.01] border-y border-white/5">
+    <section id="personal" class="py-24 px-4 bg-white/[0.01] border-y border-white/5">
         <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center md:text-left">
             <!-- Hyperfixations -->
             <div>
@@ -275,13 +363,14 @@ const blogPosts = []; // Vacío por ahora
     {blogPosts.length > 0 && (
         <section class="py-24 px-4">
             <div class="max-w-4xl mx-auto text-center md:text-left">
-                <h2 class="text-3xl font-bold mb-12 font-mono text-sdrx-purple">&gt; BITACORA_</h2>
+                <h2 id="bitacora-title" class="text-3xl font-bold mb-12 font-mono text-sdrx-purple cursor-pointer hover:opacity-75 transition-opacity" title="...">&gt; BITACORA_</h2>
+                <div id="secret-post-container" class="opacity-0 invisible transition-all duration-500 mb-8"></div>
                 <div class="space-y-8">
                     {blogPosts.map(post => (
                         <article class="p-8 bg-white/5 border border-white/10 rounded-[2rem] hover:border-sdrx-purple/30 transition-all group">
                             <time class="text-xs font-mono text-sdrx-purple mb-2 block">{post.date}</time>
                             <h3 class="text-2xl font-bold mb-4 group-hover:text-white transition-colors">{post.title}</h3>
-                            <p class="text-slate-400 text-sm mb-6 leading-relaxed">{post.snippet}</p>
+                            <p class="text-slate-400 text-sm mb-6 leading-relaxed whitespace-pre-wrap">{post.snippet}</p>
                             <a href="#" class="text-xs font-black uppercase tracking-widest text-sdrx-sky hover:underline">Seguir leyendo_</a>
                         </article>
                     ))}
@@ -394,4 +483,187 @@ const blogPosts = []; // Vacío por ahora
     setInterval(updateTime, 1000);
     updateAge();
     updateTime();
+
+    let lightboxOpen = false;
+    function openLightbox(src, title) {
+        const lightbox = document.getElementById('lightbox');
+        const img = document.getElementById('lightbox-img');
+        const titleEl = document.getElementById('lightbox-title');
+        const content = document.getElementById('lightbox-content');
+
+        img.src = src;
+        titleEl.innerText = title;
+        lightboxOpen = true;
+
+        lightbox.classList.remove('opacity-0', 'invisible');
+        setTimeout(() => {
+            content.classList.remove('scale-75', 'opacity-0');
+        }, 10);
+
+        window.addEventListener('scroll', handleScroll);
+    }
+
+    function closeLightbox(event) {
+        if (event && event.target.id !== 'lightbox') return;
+
+        const lightbox = document.getElementById('lightbox');
+        const content = document.getElementById('lightbox-content');
+
+        content.classList.add('scale-75', 'opacity-0');
+        setTimeout(() => {
+            lightbox.classList.add('opacity-0', 'invisible');
+            lightboxOpen = false;
+            window.removeEventListener('scroll', handleScroll);
+        }, 300);
+    }
+
+    function handleScroll() {
+        if (lightboxOpen) {
+            closeLightbox();
+        }
+    }
+
+    let bitacoraClicks = 0;
+    const bitacoraTitle = document.getElementById('bitacora-title');
+    const secretPostContainer = document.getElementById('secret-post-container');
+    const blogSection = document.querySelector('[class*="py-24 px-4"] .space-y-8');
+
+    bitacoraTitle?.addEventListener('click', () => {
+        bitacoraClicks++;
+
+        if (bitacoraClicks <= 2 && bitacoraClicks >= 1) {
+            bitacoraTitle.classList.add('glitch-light');
+            setTimeout(() => bitacoraTitle.classList.remove('glitch-light'), 400);
+        } else if (bitacoraClicks > 2 && bitacoraClicks <= 5) {
+            bitacoraTitle.classList.add('glitch-medium');
+            setTimeout(() => bitacoraTitle.classList.remove('glitch-medium'), 400);
+        } else if (bitacoraClicks > 5 && bitacoraClicks <= 10) {
+            bitacoraTitle.classList.add('glitch-heavy');
+
+            if (bitacoraClicks === 10) {
+                if (blogSection) blogSection.classList.add('corrupted-posts');
+
+                setTimeout(() => {
+                    secretPostContainer.innerHTML = `
+                        <article class="p-8 bg-gradient-to-br from-sdrx-red/30 to-sdrx-purple/30 border-2 border-sdrx-red rounded-[2rem] group shadow-2xl shadow-sdrx-red/30 glitch-post">
+                            <time class="text-xs font-mono text-sdrx-red mb-2 block glitch-text">${new Date().toISOString().split('T')[0]}</time>
+                            <h3 class="text-2xl font-bold mb-4 font-mono glitch-text text-sdrx-red">///SISTEMA.CORROMPIDO///</h3>
+                            <p class="text-slate-300 text-sm mb-6 leading-relaxed whitespace-pre-wrap font-mono glitch-text">encontraste algo que no debías ver. o tal vez lo que debías ver todo el tiempo. la verdad es relativa. los secretos son apenas ilusiones esperando a ser descubiertos. ¿qué es la realidad sino un conjunto de perspectivas?\n\n//ERROR_404_CONSCIOUSNESS.exe\n//status: ONLINE\n//warning: irreversible\n//access_granted: TRUE</p>
+                        </article>
+                    `;
+                    secretPostContainer.classList.remove('opacity-0', 'invisible');
+                    secretPostContainer.classList.add('glitch-post');
+                    bitacoraClicks = 0;
+                }, 300);
+            }
+        }
+    });
+
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes glitch-light {
+            0%, 100% { transform: translate(0); }
+            25% { transform: translate(-1px, 1px); }
+            50% { transform: translate(1px, -1px); }
+            75% { transform: translate(-1px, -1px); }
+        }
+
+        @keyframes glitch-medium {
+            0%, 100% { transform: translate(0); }
+            10% { transform: translate(-3px, 3px); }
+            20% { transform: translate(3px, -3px); }
+            30% { transform: translate(-3px, -3px); }
+            40% { transform: translate(3px, 3px); }
+            50% { transform: translate(-2px, 2px); }
+            60% { transform: translate(2px, -2px); }
+            70% { transform: translate(-2px, -2px); }
+            80% { transform: translate(2px, 2px); }
+        }
+
+        @keyframes glitch-heavy {
+            0%, 100% { transform: translate(0) skewX(0); }
+            5% { transform: translate(-5px, 5px) skewX(-2deg); }
+            10% { transform: translate(5px, -5px) skewX(2deg); }
+            15% { transform: translate(-5px, -5px) skewX(-2deg); }
+            20% { transform: translate(5px, 5px) skewX(2deg); }
+            25% { transform: translate(-3px, 3px) skewX(-1deg); }
+            30% { transform: translate(3px, -3px) skewX(1deg); }
+            35% { transform: translate(-4px, 4px) skewX(-2deg); }
+            40% { transform: translate(4px, -4px) skewX(2deg); }
+            45% { transform: translate(-2px, 2px) skewX(-1deg); }
+            50% { transform: translate(2px, -2px) skewX(1deg); }
+            55% { transform: translate(-3px, 3px) skewX(-2deg); }
+            60% { transform: translate(3px, -3px) skewX(2deg); }
+            65% { transform: translate(-1px, 1px) skewX(-1deg); }
+            70% { transform: translate(1px, -1px) skewX(1deg); }
+            75% { transform: translate(-4px, 4px) skewX(-2deg); }
+            80% { transform: translate(4px, -4px) skewX(2deg); }
+            85% { transform: translate(-2px, 2px) skewX(-1deg); }
+            90% { transform: translate(2px, -2px) skewX(1deg); }
+            95% { transform: translate(-1px, 1px) skewX(-1deg); }
+        }
+
+        #bitacora-title.glitch-light {
+            animation: glitch-light 0.4s ease-in-out;
+            color: #fca5a5;
+            text-shadow: 1px 0 #a855f7, -1px 0 #00d4ff;
+        }
+
+        #bitacora-title.glitch-medium {
+            animation: glitch-medium 0.4s ease-in-out;
+            color: #ef4444;
+            text-shadow: 2px 0 #a855f7, -2px 0 #00d4ff, 4px 0 #fca5a5;
+        }
+
+        #bitacora-title.glitch-heavy {
+            animation: glitch-heavy 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+            color: #dc2626;
+            text-shadow: 3px 0 #a855f7, -3px 0 #00d4ff, 6px 0 #fca5a5, -6px 0 #ec4899;
+            filter: saturate(1.5) brightness(1.2);
+        }
+
+        .corrupted-posts > article {
+            animation: data-corrupt 0.5s ease-out forwards;
+            opacity: 0.3;
+            filter: blur(2px) invert(0.1);
+            pointer-events: none;
+        }
+
+        @keyframes data-corrupt {
+            0% { transform: translateX(0) scaleY(1); opacity: 1; }
+            50% { transform: translateX(-10px) scaleY(0.95); opacity: 0.5; }
+            100% { transform: translateX(0) scaleY(1); opacity: 0.3; filter: blur(2px) invert(0.1); }
+        }
+
+        #secret-post-container.glitch-post {
+            animation: secret-appear 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+        }
+
+        @keyframes secret-appear {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) rotate(-5deg);
+                filter: blur(10px);
+            }
+            50% {
+                filter: blur(5px) brightness(1.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+                filter: blur(0);
+            }
+        }
+
+        .glitch-text {
+            animation: glitch-text 2s infinite;
+            font-weight: bold;
+        }
+
+        @keyframes glitch-text {
+            0%, 100% { text-shadow: 0 0 0 transparent; }
+            50% { text-shadow: 2px 0 #00d4ff, -2px 0 #a855f7; }
+        }
+    `;
+    document.head.appendChild(style);
 </script>

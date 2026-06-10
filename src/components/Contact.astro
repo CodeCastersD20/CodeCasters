@@ -6,65 +6,70 @@
 
   <div class="max-w-4xl mx-auto px-4 relative z-10">
     <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">¿Tienes un proyecto en mente?</h2>
+      <h2 data-i18n="contact.title" class="text-4xl md:text-5xl font-bold mb-4 text-white">¿Tienes un proyecto en mente?</h2>
       <div class="h-1.5 w-24 bg-brand-green mx-auto mb-6 rounded-full"></div>
-      <p class="text-gray-400 text-lg">Nuestro equipo está listo para desarrollar la solución perfecta para tus necesidades.</p>
+      <p data-i18n="contact.description" class="text-gray-400 text-lg">Nuestro equipo está listo para desarrollar la solución perfecta para tus necesidades.</p>
     </div>
 
     <div class="p-1 md:p-1.5 bg-gradient-to-br from-brand-green/20 via-brand-purple/20 to-transparent rounded-[2.5rem] shadow-2xl">
       <div class="bg-zinc-950 p-8 md:p-12 rounded-[2.3rem] border border-white/5">
-        <form action="https://formspree.io/f/YOUR_ID" method="POST" class="grid md:grid-cols-2 gap-8">
+        <form action="https://formspree.io/f/mgobyyek" method="POST" class="grid md:grid-cols-2 gap-8">
           <div class="space-y-2">
-            <label for="name" class="text-xs font-bold text-brand-green uppercase tracking-[0.2em] ml-2">Nombre / Organización</label>
-            <input 
-              type="text" 
-              id="name" 
-              name="name" 
-              placeholder="Ej. Sadrach Garcia" 
+            <label for="name" data-i18n="contact.name" class="text-xs font-bold text-brand-green uppercase tracking-[0.2em] ml-2">Nombre / Organización</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              data-i18n-placeholder="contact.namePlaceholder"
+              placeholder="Ej. Juan Pérez / Acme Corp"
               required
               class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-brand-green/50 focus:ring-1 focus:ring-brand-green/30 transition-all"
             />
           </div>
 
           <div class="space-y-2">
-            <label for="email" class="text-xs font-bold text-brand-purple uppercase tracking-[0.2em] ml-2">Email de Contacto</label>
-            <input 
-              type="email" 
-              id="email" 
-              name="email" 
-              placeholder="contacto@ejemplo.com" 
+            <label for="email" data-i18n="contact.email" class="text-xs font-bold text-brand-purple uppercase tracking-[0.2em] ml-2">Email de Contacto</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              data-i18n-placeholder="contact.emailPlaceholder"
+              placeholder="contacto@ejemplo.com"
               required
               class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-brand-purple/50 focus:ring-1 focus:ring-brand-purple/30 transition-all"
             />
           </div>
 
           <div class="md:col-span-2 space-y-2">
-            <label for="subject" class="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] ml-2">Asunto del Proyecto</label>
-            <input 
-              type="text" 
-              id="subject" 
-              name="subject" 
-              placeholder="Ej. Desarrollo de Web App Escalable" 
+            <label for="subject" data-i18n="contact.subject" class="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] ml-2">Asunto del Proyecto</label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              data-i18n-placeholder="contact.subjectPlaceholder"
+              placeholder="Ej. Desarrollo de Web App Escalable"
               required
               class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-white/20 transition-all"
             />
           </div>
 
           <div class="md:col-span-2 space-y-2">
-            <label for="message" class="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] ml-2">Descripción del Requerimiento</label>
-            <textarea 
-              id="message" 
-              name="message" 
-              rows="5" 
-              placeholder="Cuéntanos los detalles de tu proyecto..." 
+            <label for="message" data-i18n="contact.message" class="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] ml-2">Descripción del Requerimiento</label>
+            <textarea
+              id="message"
+              name="message"
+              data-i18n-placeholder="contact.messagePlaceholder"
+              rows="5"
+              placeholder="Cuéntanos los detalles de tu proyecto..."
               required
               class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-white/20 transition-all resize-none"
             ></textarea>
           </div>
 
           <div class="md:col-span-2 pt-4">
-            <button 
-              type="submit" 
+            <button
+              type="submit"
+              data-i18n="contact.submit"
               class="w-full py-5 bg-white text-black font-black rounded-2xl hover:bg-brand-green transition-all transform hover:-translate-y-1 shadow-xl shadow-brand-green/10 flex items-center justify-center gap-3 uppercase tracking-widest"
             >
               Enviar Solicitud
@@ -73,17 +78,17 @@
           </div>
         </form>
         
-        <div class="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-4">
-                <div class="p-3 bg-brand-green/10 rounded-xl">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-green"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        <div class="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-6 px-2">
+            <div class="flex items-center gap-2 sm:gap-4 min-w-0">
+                <div class="p-2 sm:p-3 bg-brand-green/10 rounded-xl flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-green sm:w-5 sm:h-5"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                 </div>
-                <div>
-                    <p class="text-[10px] text-gray-500 uppercase font-black tracking-widest">Contacto Directo</p>
-                    <p class="text-white font-mono text-sm">jdiegodev0805+contactus@gmail.com</p>
+                <div class="min-w-0 flex-1">
+                    <p data-i18n="contact.directContact" class="text-[8px] sm:text-[10px] text-gray-500 uppercase font-black tracking-widest truncate">Contacto Directo</p>
+                    <p class="text-white font-mono text-xs sm:text-sm truncate">jdiegodev0805+contactus@gmail.com</p>
                 </div>
             </div>
-            <p class="text-gray-600 text-xs italic">CodeCasters — Ingeniería de Elite</p>
+            <p data-i18n="contact.footer" class="text-gray-600 text-[10px] sm:text-xs italic whitespace-nowrap">CodeCasters — Ingeniería de Elite</p>
         </div>
       </div>
     </div>

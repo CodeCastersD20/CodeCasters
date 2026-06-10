@@ -1,0 +1,43 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: 'website' | 'profile';
+  noindex?: boolean;
+  structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
+}
+
+const {
+  title,
+  description,
+  image = '/assets/CodeCasters.png',
+  type = 'website',
+  noindex = false,
+  structuredData
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
+const socialImage = new URL(image, Astro.site ?? Astro.url.origin);
+---
+
+<link rel="canonical" href={canonical} />
+<meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'} />
+
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content="CodeCasters" />
+<meta property="og:locale" content="es_MX" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={socialImage} />
+<meta property="og:image:alt" content={`${title} — CodeCasters`} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={socialImage} />
+
+{structuredData && (
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+)}

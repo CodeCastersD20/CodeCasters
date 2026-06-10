@@ -26,3 +26,6 @@ SDRX-Dots/
 SDRX-Beat/
 SDRX-pax/
 CLAUDE.md
+.claude/
+.vscode/
+.wrangler/

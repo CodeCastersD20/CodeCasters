@@ -1,4 +1,5 @@
 ---
+import LanguageSwitcher from './LanguageSwitcher.astro';
 ---
 <section class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden py-20 px-4">
   <!-- Top Navigation -->
@@ -8,10 +9,11 @@
         <img src="/assets/CodeCasters.png" alt="CodeCasters Logo" width="40" class="drop-shadow-[0_0_8px_rgba(74,222,128,0.2)] group-hover:scale-110 transition-transform md:w-[45px]" />
         <span class="font-bold tracking-tighter text-lg md:text-xl text-white hidden sm:block">Code<span class="text-brand-green">Casters</span></span>
       </div>
-      <div class="flex gap-4 md:gap-8">
-        <a href="#nosotros" class="text-[10px] md:text-sm font-medium text-gray-400 hover:text-brand-green transition-colors uppercase tracking-widest">Nosotros</a>
-        <a href="#equipo" class="text-[10px] md:text-sm font-medium text-gray-400 hover:text-brand-green transition-colors uppercase tracking-widest">Equipo</a>
-        <a href="#contacto" class="text-[10px] md:text-sm font-medium text-gray-400 hover:text-brand-green transition-colors uppercase tracking-widest">Contacto</a>
+      <div class="flex gap-4 md:gap-8 items-center">
+        <a href="#nosotros" data-i18n="nav.nosotros" class="text-[10px] md:text-sm font-medium text-gray-400 hover:text-brand-green transition-colors uppercase tracking-widest">Nosotros</a>
+        <a href="#equipo" data-i18n="nav.equipo" class="text-[10px] md:text-sm font-medium text-gray-400 hover:text-brand-green transition-colors uppercase tracking-widest">Equipo</a>
+        <a href="#contacto" data-i18n="nav.contacto" class="text-[10px] md:text-sm font-medium text-gray-400 hover:text-brand-green transition-colors uppercase tracking-widest">Contacto</a>
+        <LanguageSwitcher />
       </div>
     </div>
   </nav>
@@ -22,54 +24,104 @@
     <div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-brand-green/10 rounded-full blur-[120px]"></div>
   </div>
 
-  <div class="relative z-10 text-center max-w-4xl mx-auto">
+  <div class="relative z-10 text-center max-w-4xl mx-auto w-full px-4 sm:px-6">
     <!-- Restored D20 SVG -->
-    <div class="mb-8 inline-block relative group">
+    <div class="mb-6 sm:mb-8 inline-block relative group">
       <div class="absolute inset-0 bg-brand-green blur-3xl opacity-10 group-hover:opacity-30 transition-opacity animate-pulse"></div>
-      <svg width="120" height="120" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10 drop-shadow-[0_0_15px_rgba(74,222,128,0.2)] group-hover:scale-105 transition-transform duration-500">
+      <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="sm:w-[120px] sm:h-[120px] relative z-10 drop-shadow-[0_0_15px_rgba(74,222,128,0.2)] group-hover:scale-105 transition-transform duration-500">
         <path d="M50 5L10 25V75L50 95L90 75V25L50 5Z" stroke="currentColor" stroke-width="2" class="text-brand-green" />
         <path d="M50 20L25 32.5V67.5L50 80L75 67.5V32.5L50 20Z" stroke="currentColor" stroke-width="1" class="text-brand-purple" />
         <text x="50" y="58" text-anchor="middle" font-family="monospace" font-size="24" fill="currentColor" class="text-brand-green font-bold">20</text>
       </svg>
     </div>
 
-    <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400">
+    <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-3 sm:mb-4 bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400">
       Code<span class="text-brand-green">Casters</span>
     </h1>
-    
-    <div class="flex justify-center mb-8">
-      <p class="text-xl md:text-2xl text-brand-green font-mono opacity-90 overflow-hidden whitespace-nowrap border-r-4 border-brand-green w-0 animate-typewriter">
-        &gt; soluciones_limpias, eficientes y escalables_
+
+    <div class="flex justify-center mb-6 sm:mb-8 px-2 h-8 sm:h-10 md:h-12">
+      <p id="typewriter-text" class="text-base sm:text-lg md:text-xl lg:text-2xl text-brand-green font-mono opacity-90 overflow-hidden whitespace-nowrap border-r-4 border-brand-green">
+        &gt;
       </p>
     </div>
 
     <style>
-      .animate-typewriter {
-        animation: 
-          typing 3.5s steps(45, end) forwards,
+      .typewriter-active {
+        animation:
+          typing 2s steps(35, end) forwards,
           blink-caret .75s step-end infinite;
       }
 
       @keyframes typing {
-        from { width: 0 }
-        to { width: 100% }
+        from { width: auto; }
+        to { width: auto; }
       }
 
       @keyframes blink-caret {
         from, to { border-color: transparent }
         50% { border-color: #4ade80; }
       }
+
+      .fade-out {
+        animation: fadeOutText 0.8s ease-out forwards;
+      }
+
+      @keyframes fadeOutText {
+        0% { opacity: 1; }
+        100% { opacity: 0; }
+      }
     </style>
+
+    <script is:inline>
+      const lang = localStorage.getItem('site-language') || 'es';
+      const t = window.__i18n?.[lang] || window.__i18n?.es;
+      const phrases = [
+        t.hero.slogan1,
+        t.hero.slogan2,
+        t.hero.slogan3
+      ];
+
+      let currentPhrase = 0;
+      const typewriterText = document.getElementById('typewriter-text');
+
+      function typeWriter(text, callback) {
+        let index = 0;
+        typewriterText.textContent = '> ';
+        typewriterText.classList.add('typewriter-active');
+
+        const interval = setInterval(() => {
+          if (index < text.length) {
+            typewriterText.textContent += text[index];
+            index++;
+          } else {
+            clearInterval(interval);
+            typewriterText.classList.remove('typewriter-active');
+            setTimeout(callback, 1500);
+          }
+        }, 40);
+      }
+
+      function rotatePhrase() {
+        typewriterText.classList.add('fade-out');
+        setTimeout(() => {
+          typewriterText.classList.remove('fade-out');
+          currentPhrase = (currentPhrase + 1) % phrases.length;
+          typeWriter(phrases[currentPhrase], rotatePhrase);
+        }, 800);
+      }
+
+      typeWriter(phrases[0], rotatePhrase);
+    </script>
     
-    <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+    <p data-i18n="hero.description" class="text-gray-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed px-2">
       Ingenieros de la Universidad Tecnológica de Hermosillo. Forjando soluciones de software con precisión técnica y un toque de identidad arcana.
     </p>
 
-    <div class="flex flex-wrap justify-center gap-4">
-      <a href="#contacto" class="px-8 py-3 bg-brand-green text-black font-bold rounded-md hover:bg-white transition-colors">
+    <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 px-2">
+      <a href="#contacto" data-i18n="hero.cta1" class="px-6 sm:px-8 py-3 bg-brand-green text-black font-bold rounded-md hover:bg-white transition-colors text-sm sm:text-base">
         Lanzar Proyecto
       </a>
-      <a href="#equipo" class="px-8 py-3 border border-gray-700 hover:border-brand-purple text-white font-medium rounded-md transition-all">
+      <a href="#equipo" data-i18n="hero.cta2" class="px-6 sm:px-8 py-3 border border-gray-700 hover:border-brand-purple text-white font-medium rounded-md transition-all text-sm sm:text-base">
         Conoce al Equipo
       </a>
     </div>

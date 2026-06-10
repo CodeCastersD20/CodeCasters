@@ -1,12 +1,33 @@
 ---
 import '../styles/global.css';
+import { getTranslations } from '../i18n/index';
+import SiteSecrets from '../components/SiteSecrets.astro';
+import SeoHead from '../components/SeoHead.astro';
 
 interface Props {
 	title: string;
 	description?: string;
+	noindex?: boolean;
 }
 
-const { title, description = "CodeCasters - Soluciones limpias, eficientes y escalables. Equipo de ingeniería especializado en desarrollo web moderno." } = Astro.props;
+const {
+	title,
+	description = "CodeCasters - Soluciones limpias, eficientes y escalables. Equipo de ingeniería especializado en desarrollo web moderno.",
+	noindex = false
+} = Astro.props;
+
+const organizationSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Organization',
+	name: 'CodeCasters',
+	url: new URL('/', Astro.site ?? Astro.url.origin).href,
+	logo: new URL('/assets/CodeCasters.png', Astro.site ?? Astro.url.origin).href,
+	description,
+	knowsAbout: ['Desarrollo web', 'Ingeniería de software', 'Aplicaciones multiplataforma', 'Arquitectura de software']
+};
+
+const es = getTranslations('es');
+const en = getTranslations('en');
 ---
 
 <!doctype html>
@@ -18,13 +39,46 @@ const { title, description = "CodeCasters - Soluciones limpias, eficientes y esc
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<meta name="description" content={description} />
+		<SeoHead title={title} description={description} noindex={noindex} structuredData={organizationSchema} />
 		<!-- Google Fonts: Inter for UI and JetBrains Mono for a tech feel -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+		<!-- i18n data -->
+		<script is:inline define:vars={{ es, en }}>
+			window.__i18n = { es, en };
+		</script>
 	</head>
 	<body class="bg-black text-gray-200 selection:bg-brand-green/30 selection:text-brand-green">
 		<slot />
+		<SiteSecrets />
+		<!-- i18n boot script - after slot so DOM elements exist -->
+		<script is:inline>
+			(function() {
+				const lang = localStorage.getItem('site-language') || 'es';
+				const t = window.__i18n?.[lang];
+				if (!t || lang === 'es') {
+					document.documentElement.lang = 'es';
+					return;
+				}
+
+				function get(obj, path) {
+					return path.split('.').reduce((o, k) => o?.[k], obj);
+				}
+
+				document.querySelectorAll('[data-i18n]').forEach(el => {
+					const val = get(t, el.dataset.i18n);
+					if (val) el.textContent = val.replace('{year}', new Date().getFullYear());
+				});
+
+				document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+					const val = get(t, el.dataset.i18nPlaceholder);
+					if (val) el.placeholder = val;
+				});
+
+				document.documentElement.lang = lang;
+			})();
+		</script>
 	</body>
 </html>
 

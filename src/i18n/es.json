@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "title": "CodeCasters | Soluciones de Software Limpias y Escalables",
+    "description": "CodeCasters - Soluciones limpias, eficientes y escalables. Equipo de ingeniería especializado en desarrollo web moderno."
+  },
+  "nav": {
+    "nosotros": "Nosotros",
+    "equipo": "Equipo",
+    "contacto": "Contacto"
+  },
+  "hero": {
+    "title": "CodeCasters",
+    "slogan1": "soluciones_limpias_",
+    "slogan2": "eficientes_y_escalables_",
+    "slogan3": "codigo_con_proposito_",
+    "description": "Ingenieros de la Universidad Tecnológica de Hermosillo. Forjando soluciones de software con precisión técnica y un toque de identidad arcana.",
+    "cta1": "Lanzar Proyecto",
+    "cta2": "Conoce al Equipo"
+  },
+  "about": {
+    "title": "¿Quiénes somos?",
+    "p1": "CodeCasters es un equipo de desarrollo de software especializado en aplicaciones web modernas. Priorizamos código limpio, arquitecturas mantenibles y soluciones eficientes adaptadas a cada problema.",
+    "p2": "Aunque nuestro fuerte es el desarrollo web, también construimos aplicaciones de escritorio, móviles y herramientas de propósito general cuando el proyecto lo requiere.",
+    "deliverablesTitle": "Lo que entregamos:",
+    "deliverables": [
+      "Gestión ágil (Kanban & Sprints)",
+      "Documentación técnica completa",
+      "Código fuente auditable y semántico",
+      "Garantía de calidad y testing"
+    ],
+    "philosophyTitle": "Nuestra Filosofía",
+    "values": [
+      {
+        "title": "Código limpio sobre código rápido",
+        "desc": "Escribimos pensando en quien lo lee después, garantizando mantenibilidad."
+      },
+      {
+        "title": "Soluciones al problema real",
+        "desc": "Evitamos el over-engineering innecesario; eficacia pura."
+      },
+      {
+        "title": "Colaboración abierta",
+        "desc": "Revisamos, comentamos y aprendemos en equipo constantemente."
+      },
+      {
+        "title": "Tecnología al servicio del producto",
+        "desc": "Elegimos el stack que mejor resuelve, no el más popular."
+      }
+    ]
+  },
+  "team": {
+    "title": "El Equipo",
+    "subtitle": "Haz clic en un miembro para ver sus proyectos personales.",
+    "focusLabel": "Enfoque:",
+    "portfolioCta": "VER PORTAFOLIO PERSONAL",
+    "members": {
+      "sdrx": {
+        "role": "Fullstack — Líder General & Backend",
+        "focus": "Arquitectura, API, lógica de negocio, integración, Linux Ops"
+      },
+      "adriana": {
+        "role": "Frontend — Líder de Frontend",
+        "focus": "UI/UX, componentes, vistas, diseño interactivo"
+      },
+      "erick": {
+        "role": "Frontend",
+        "focus": "Vistas, integración con API, testing de UI"
+      },
+      "manolo": {
+        "role": "Backend",
+        "focus": "Servicios, lógica de negocio, bases de datos, validaciones"
+      },
+      "adrian": {
+        "role": "Miembro del Equipo",
+        "focus": "En formación"
+      }
+    }
+  },
+  "techstack": {
+    "title": "Nuestro Arsenal Tecnológico",
+    "subtitle": "Tecnologías y herramientas que dominamos para construir soluciones de alto impacto.",
+    "groups": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "db": "Bases de Datos & ORM",
+      "devops": "DevOps & Tooling"
+    }
+  },
+  "construction": {
+    "status": "> STATUS: EN_CONSTRUCCION_",
+    "description": "Este miembro de CodeCasters está desarrollando su espacio personal. Vuelve pronto para ver sus proyectos y contribuciones.",
+    "backLink": "Volver al Inicio"
+  },
+  "sdrx": {
+    "backLink": "Volver a CodeCasters",
+    "intro": "Soy Sadrach Juan Diego Garcia Flores tengo {age}, Ingeniero en software multiplataforma.",
+    "working": "Trabajando en Kngura",
+    "dotsTitle": "SDRX-dots",
+    "dotsDesc": "Mi entorno de escritorio definitivo. Un ecosistema visualmente impactante construido sobre Arch Linux y Hyprland.",
+    "terminalTitle": "Forjas de Terminal",
+    "terminalDesc": "Utilerías diseñadas para la eficiencia pura. Rendimiento y control total sobre el núcleo.",
+    "contribute": "¿Quieres contribuir? Abre un PR en GitHub_",
+    "hyperFixations": "Hiperfijaciones",
+    "battleField": "Campo de Batalla",
+    "frequencies": "Frecuencias",
+    "mainPlaylist": "Mi Playlist Principal",
+    "tuning": "Sintonizando favoritos_",
+    "code": "¿NECESITAS UN DESARROLLO DE CÓDIGO?",
+    "directAccess": "Direct_Access",
+    "discordNode": "Discord_Node",
+    "copyright": "SDRX © 2026 — DIGITAL RUNTIME EXPERIENCE"
+  },
+  "footer": {
+    "copyright": "© {year} CodeCasters — código con propósito."
+  }
+}

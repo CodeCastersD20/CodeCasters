@@ -8,8 +8,78 @@ interface Props {
 const { name } = Astro.props;
 ---
 
-<Layout title={`${name} | CodeCasters`}>
-  <main class="min-h-screen flex flex-col items-center justify-center p-4 text-center">
+<Layout
+  title={`${name} | CodeCasters`}
+  description={`Portafolio de ${name}, integrante de CodeCasters. Página actualmente en construcción.`}
+  noindex={true}
+>
+  <!-- Navbar -->
+  <nav class="p-4 md:p-6 fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-lg border-b border-white/5">
+    <div class="max-w-7xl mx-auto flex justify-between items-center gap-4">
+      <!-- Left: Back link -->
+      <a href="/" class="text-xs md:text-sm font-mono text-gray-500 hover:text-brand-green transition-colors flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        <span data-i18n="nav.nosotros">Volver a CodeCasters</span>
+      </a>
+
+      <!-- Center: Version -->
+      <div class="text-slate-600 text-[10px] md:text-xs font-mono uppercase tracking-widest">
+        v1.6.0-stable
+      </div>
+
+      <!-- Right: Language selector -->
+      <div class="flex gap-2 bg-white/5 border border-white/10 rounded-full p-1">
+        <button
+          data-lang="es"
+          class="px-2 py-0.5 md:px-3 md:py-1 text-[10px] md:text-xs font-bold uppercase rounded-full transition-all active"
+          style="background-color: #4ade80; color: black;"
+        >
+          ES
+        </button>
+        <button
+          data-lang="en"
+          class="px-2 py-0.5 md:px-3 md:py-1 text-[10px] md:text-xs font-bold uppercase rounded-full transition-all"
+          style="color: #9ca3af;"
+        >
+          EN
+        </button>
+      </div>
+    </div>
+
+    <!-- Language switcher script -->
+    <script is:inline>
+      function initConstructionLangSwitcher() {
+        const buttons = document.querySelectorAll('[data-lang]');
+        const currentLang = localStorage.getItem('site-language') || 'es';
+
+        buttons.forEach(btn => {
+          const lang = btn.getAttribute('data-lang');
+          if (lang === currentLang) {
+            btn.classList.add('active');
+            btn.style.backgroundColor = '#4ade80';
+            btn.style.color = 'black';
+          } else {
+            btn.classList.remove('active');
+            btn.style.backgroundColor = 'transparent';
+            btn.style.color = '#9ca3af';
+          }
+
+          btn.addEventListener('click', () => {
+            localStorage.setItem('site-language', lang);
+            location.reload();
+          });
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initConstructionLangSwitcher);
+      } else {
+        initConstructionLangSwitcher();
+      }
+    </script>
+  </nav>
+
+  <main class="min-h-screen flex flex-col items-center justify-center p-4 pt-28 md:pt-32 text-center">
     <div class="absolute inset-0 z-0 overflow-hidden">
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-purple/10 blur-[120px] rounded-full"></div>
     </div>
@@ -20,17 +90,17 @@ const { name } = Astro.props;
         </h1>
         <div class="h-1 w-24 bg-brand-green mx-auto mb-8"></div>
         
-        <p class="text-xl font-mono text-brand-green mb-12 animate-pulse">
+        <p data-i18n="construction.status" class="text-xl font-mono text-brand-green mb-12 animate-pulse">
             &gt; STATUS: EN_CONSTRUCCION_
         </p>
 
-        <p class="text-gray-400 max-w-md mx-auto mb-10 leading-relaxed">
+        <p data-i18n="construction.description" class="text-gray-400 max-w-md mx-auto mb-10 leading-relaxed">
             Este miembro de CodeCasters está desarrollando su espacio personal. Vuelve pronto para ver sus proyectos y contribuciones.
         </p>
 
         <a href="/" class="inline-flex items-center gap-2 px-6 py-3 border border-white/10 rounded-full text-sm font-bold hover:bg-white hover:text-black transition-all">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-            Volver al Inicio
+            <span data-i18n="construction.backLink">Volver al Inicio</span>
         </a>
     </div>
   </main>

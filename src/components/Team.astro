@@ -6,45 +6,50 @@ const members = [
     focus: "Arquitectura, API, lógica de negocio, integración, Linux Ops",
     color: "brand-green",
     alias: "SDRX",
-    link: "/sdrx"
+    link: "/sdrx",
+    key: "sdrx"
   },
   {
     name: "Adrian Eduardo Santos Rosales",
     role: "Frontend — Líder de Frontend",
     focus: "UI/UX, componentes, vistas, diseño interactivo",
     color: "brand-purple",
-    link: "/adrian"
+    link: "/adrian",
+    key: "adrian"
   },
   {
     name: "Jesus Adriana Martinez Trillas",
     role: "Frontend",
     focus: "Vistas, integración con API, testing de UI",
     color: "brand-blue",
-    link: "/adriana"
+    link: "/adriana",
+    key: "adriana"
   },
   {
     name: "Erick Daniel Arvayo Aviles",
     role: "Backend",
     focus: "Servicios, lógica de negocio, bases de datos, validaciones",
     color: "brand-red",
-    link: "/erick"
+    link: "/erick",
+    key: "erick"
   },
   {
     name: "Manolo",
     role: "Miembro del Equipo",
     focus: "En formación",
     color: "brand-purple",
-    link: "/manolo"
+    link: "/manolo",
+    key: "manolo"
   }
 ];
 ---
 <section id="equipo" class="py-24 bg-zinc-950">
   <div class="max-w-6xl mx-auto px-4">
     <div class="mb-16">
-      <h2 class="text-3xl font-bold mb-4 flex items-center gap-3">
+      <h2 data-i18n="team.title" class="text-3xl font-bold mb-4 flex items-center gap-3">
         <span class="text-brand-purple font-mono">02.</span> El Equipo
       </h2>
-      <p class="text-gray-400">Haz clic en un miembro para ver sus proyectos personales.</p>
+      <p data-i18n="team.subtitle" class="text-gray-400">Haz clic en un miembro para ver sus proyectos personales.</p>
     </div>
 
     <div class="grid md:grid-cols-2 gap-8">
@@ -52,20 +57,20 @@ const members = [
         <a href={m.link || "#"} class="group p-8 rounded-3xl bg-black border border-white/5 hover:border-brand-green/20 transition-all relative overflow-hidden">
           <!-- Subtle glow based on member color -->
           <div class={`absolute top-0 right-0 w-32 h-32 opacity-0 group-hover:opacity-10 blur-3xl transition-opacity rounded-full bg-${m.color}`}></div>
-          
+
           <div class="relative z-10">
             <div class="flex justify-between items-start mb-1">
               <h3 class="text-xl font-bold text-white group-hover:text-brand-green transition-colors">{m.name}</h3>
               {m.alias && <span class="text-[10px] font-mono bg-brand-green/10 text-brand-green px-2 py-0.5 rounded border border-brand-green/20">{m.alias}</span>}
             </div>
-            <p class="text-brand-green font-mono text-xs mb-4 uppercase tracking-tighter">{m.role}</p>
+            <p data-i18n={`team.members.${m.key}.role`} class="text-brand-green font-mono text-xs mb-4 uppercase tracking-tighter">{m.role}</p>
             <div class="h-px w-12 bg-gray-800 mb-4"></div>
             <p class="text-sm text-gray-400 leading-relaxed">
-              <span class="text-gray-500 italic">Enfoque:</span> {m.focus}
+              <span data-i18n="team.focusLabel" class="text-gray-500 italic">Enfoque:</span> <span data-i18n={`team.members.${m.key}.focus`}>{m.focus}</span>
             </p>
-            
+
             <div class="mt-6 flex items-center gap-2 text-xs font-bold text-brand-green opacity-0 group-hover:opacity-100 transition-opacity">
-              VER PORTAFOLIO PERSONAL
+              <span data-i18n="team.portfolioCta">VER PORTAFOLIO PERSONAL</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
             </div>
           </div>

@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "title": "CodeCasters | Clean and Scalable Software Solutions",
+    "description": "CodeCasters - Clean, efficient, and scalable solutions. Engineering team specialized in modern web development."
+  },
+  "nav": {
+    "nosotros": "About",
+    "equipo": "Team",
+    "contacto": "Contact"
+  },
+  "hero": {
+    "title": "CodeCasters",
+    "slogan1": "clean_solutions_",
+    "slogan2": "efficient_and_scalable_",
+    "slogan3": "code_with_purpose_",
+    "description": "Engineers from Tecnológica de Hermosillo University. Crafting software solutions with technical precision and a touch of arcane identity.",
+    "cta1": "Launch Project",
+    "cta2": "Meet the Team"
+  },
+  "about": {
+    "title": "About Us",
+    "p1": "CodeCasters is a software development team specialized in modern web applications. We prioritize clean code, maintainable architectures, and efficient solutions tailored to each problem.",
+    "p2": "While our strength lies in web development, we also build desktop applications, mobile apps, and general-purpose tools when the project requires it.",
+    "deliverablesTitle": "What We Deliver:",
+    "deliverables": [
+      "Agile management (Kanban & Sprints)",
+      "Complete technical documentation",
+      "Auditable and semantic source code",
+      "Quality assurance and testing"
+    ],
+    "philosophyTitle": "Our Philosophy",
+    "values": [
+      {
+        "title": "Clean code over fast code",
+        "desc": "We write thinking about who reads it next, ensuring maintainability."
+      },
+      {
+        "title": "Solutions to the real problem",
+        "desc": "We avoid unnecessary over-engineering; pure efficiency."
+      },
+      {
+        "title": "Open collaboration",
+        "desc": "We review, comment, and learn as a team constantly."
+      },
+      {
+        "title": "Technology in service of the product",
+        "desc": "We choose the stack that solves best, not the most popular."
+      }
+    ]
+  },
+  "team": {
+    "title": "The Team",
+    "subtitle": "Click on a member to see their personal projects.",
+    "focusLabel": "Focus:",
+    "portfolioCta": "VIEW PERSONAL PORTFOLIO",
+    "members": {
+      "sdrx": {
+        "role": "Fullstack — General Lead & Backend",
+        "focus": "Architecture, API, business logic, integration, Linux Ops"
+      },
+      "adriana": {
+        "role": "Frontend — Frontend Lead",
+        "focus": "UI/UX, components, views, interactive design"
+      },
+      "erick": {
+        "role": "Frontend",
+        "focus": "Views, API integration, UI testing"
+      },
+      "manolo": {
+        "role": "Backend",
+        "focus": "Services, business logic, databases, validations"
+      },
+      "adrian": {
+        "role": "Team Member",
+        "focus": "In training"
+      }
+    }
+  },
+  "techstack": {
+    "title": "Our Tech Arsenal",
+    "subtitle": "Technologies and tools we master to build high-impact solutions.",
+    "groups": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "db": "Databases & ORM",
+      "devops": "DevOps & Tooling"
+    }
+  },
+  "construction": {
+    "status": "> STATUS: UNDER_CONSTRUCTION_",
+    "description": "This CodeCasters member is developing their personal space. Come back soon to see their projects and contributions.",
+    "backLink": "Back to Home"
+  },
+  "sdrx": {
+    "backLink": "Back to CodeCasters",
+    "intro": "I'm Sadrach Juan Diego Garcia Flores I have {age}, Multiplatform Software Engineer.",
+    "working": "Working at Kngura",
+    "dotsTitle": "SDRX-dots",
+    "dotsDesc": "My ultimate desktop environment. A visually striking ecosystem built on Arch Linux and Hyprland.",
+    "terminalTitle": "Terminal Forges",
+    "terminalDesc": "Utilities designed for pure efficiency. Performance and total control over the core.",
+    "contribute": "Want to contribute? Open a PR on GitHub_",
+    "hyperFixations": "Hyperfixations",
+    "battleField": "Battlefield",
+    "frequencies": "Frequencies",
+    "mainPlaylist": "My Main Playlist",
+    "tuning": "Tuning favorites_",
+    "code": "DO YOU NEED CODE DEVELOPMENT?",
+    "directAccess": "Direct_Access",
+    "discordNode": "Discord_Node",
+    "copyright": "SDRX © 2026 — DIGITAL RUNTIME EXPERIENCE"
+  },
+  "footer": {
+    "copyright": "© {year} CodeCasters — code with purpose."
+  }
+}

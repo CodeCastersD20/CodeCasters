@@ -33,23 +33,23 @@ const deliverables = [
   <div class="max-w-6xl mx-auto px-4">
     <div class="grid md:grid-cols-2 gap-16 items-start">
       <div>
-        <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+        <h2 data-i18n="about.title" class="text-3xl font-bold mb-6 flex items-center gap-3">
           <span class="text-brand-green font-mono">01.</span> ¿Quiénes somos?
         </h2>
-        <p class="text-gray-400 leading-relaxed mb-6">
-          CodeCasters es un equipo de desarrollo de software especializado en aplicaciones web modernas. Priorizamos código limpio, 
-          arquitecturas mantenibles y soluciones eficientes adaptadas a cada problema. 
+        <p data-i18n="about.p1" class="text-gray-400 leading-relaxed mb-6">
+          CodeCasters es un equipo de desarrollo de software especializado en aplicaciones web modernas. Priorizamos código limpio,
+          arquitecturas mantenibles y soluciones eficientes adaptadas a cada problema.
         </p>
-        <p class="text-gray-400 leading-relaxed">
+        <p data-i18n="about.p2" class="text-gray-400 leading-relaxed">
           Aunque nuestro fuerte es el desarrollo web, también construimos aplicaciones de escritorio, móviles y herramientas de propósito
           general cuando el proyecto lo requiere.
         </p>
-        
+
         <div class="mt-10 p-6 bg-brand-purple/5 border border-brand-purple/20 rounded-xl">
-          <h3 class="text-brand-purple font-bold mb-4">Lo que entregamos:</h3>
+          <h3 data-i18n="about.deliverablesTitle" class="text-brand-purple font-bold mb-4">Lo que entregamos:</h3>
           <ul class="space-y-3">
-            {deliverables.map(item => (
-              <li class="flex items-center gap-3 text-gray-300">
+            {deliverables.map((item, idx) => (
+              <li data-i18n={`about.deliverables.${idx}`} class="flex items-center gap-3 text-gray-300">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-brand-green">
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
@@ -61,15 +61,15 @@ const deliverables = [
       </div>
 
       <div>
-        <h2 class="text-3xl font-bold mb-8">Nuestra Filosofía</h2>
+        <h2 data-i18n="about.philosophyTitle" class="text-3xl font-bold mb-8">Nuestra Filosofía</h2>
         <div class="grid gap-6">
-          {values.map(val => (
+          {values.map((val, idx) => (
             <div class="group p-5 bg-white/5 border border-white/10 rounded-lg hover:border-brand-green/30 transition-colors">
               <div class="flex gap-4">
                 <span class="text-2xl">{val.icon}</span>
                 <div>
-                  <h4 class="font-bold text-gray-100 mb-1 group-hover:text-brand-green transition-colors">{val.title}</h4>
-                  <p class="text-sm text-gray-400">{val.desc}</p>
+                  <h4 data-i18n={`about.values.${idx}.title`} class="font-bold text-gray-100 mb-1 group-hover:text-brand-green transition-colors">{val.title}</h4>
+                  <p data-i18n={`about.values.${idx}.desc`} class="text-sm text-gray-400">{val.desc}</p>
                 </div>
               </div>
             </div>

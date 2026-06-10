@@ -1,11 +1,37 @@
 ---
 import '../styles/global.css';
+import { getTranslations } from '../i18n/index';
+import SiteSecrets from '../components/SiteSecrets.astro';
+import SeoHead from '../components/SeoHead.astro';
 
 interface Props {
 	title: string;
+	description?: string;
 }
 
-const { title } = Astro.props;
+const {
+	title,
+	description = 'Portafolio de Sadrach Juan Diego García Flores: proyectos SDRX, Linux, desarrollo web y herramientas para terminal.'
+} = Astro.props;
+
+const profileSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: 'Sadrach Juan Diego García Flores',
+	alternateName: 'SDRX',
+	url: new URL('/sdrx', Astro.site ?? Astro.url.origin).href,
+	image: new URL('/assets/sdrx-dots/logo-sdrx.png', Astro.site ?? Astro.url.origin).href,
+	jobTitle: 'Ingeniero de software multiplataforma',
+	memberOf: {
+		'@type': 'Organization',
+		name: 'CodeCasters',
+		url: new URL('/', Astro.site ?? Astro.url.origin).href
+	},
+	sameAs: ['https://github.com/Sadrach34']
+};
+
+const es = getTranslations('es');
+const en = getTranslations('en');
 ---
 
 <!doctype html>
@@ -15,12 +41,46 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<title>{title}</title>
+		<meta name="description" content={description} />
+		<SeoHead title={title} description={description} image="/assets/sdrx-dots/logo-sdrx.png" type="profile" structuredData={profileSchema} />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+		<!-- i18n data -->
+		<script is:inline define:vars={{ es, en }}>
+			window.__i18n = { es, en };
+		</script>
 	</head>
 	<body class="bg-[#0a0a0c] text-slate-200 selection:bg-sdrx-sky/30 selection:text-sdrx-sky">
 		<slot />
+		<SiteSecrets />
+		<!-- i18n boot script - after slot so DOM elements exist -->
+		<script is:inline>
+			(function() {
+				const lang = localStorage.getItem('site-language') || 'es';
+				const t = window.__i18n?.[lang];
+				if (!t || lang === 'es') {
+					document.documentElement.lang = 'es';
+					return;
+				}
+
+				function get(obj, path) {
+					return path.split('.').reduce((o, k) => o?.[k], obj);
+				}
+
+				document.querySelectorAll('[data-i18n]').forEach(el => {
+					const val = get(t, el.dataset.i18n);
+					if (val) el.textContent = val.replace('{year}', new Date().getFullYear());
+				});
+
+				document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+					const val = get(t, el.dataset.i18nPlaceholder);
+					if (val) el.placeholder = val;
+				});
+
+				document.documentElement.lang = lang;
+			})();
+		</script>
 	</body>
 </html>
 

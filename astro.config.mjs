@@ -6,9 +6,7 @@ import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
-  // Reemplaza esto con tu URL de GitHub Pages
-  // site: 'https://TU_USUARIO.github.io',
-  // base: '/CodeCasters', // El nombre de tu repositorio
+  site: 'https://cc.codecaster.workers.dev',
 
   vite: {
     plugins: [tailwindcss()]

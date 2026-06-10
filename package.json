@@ -15,6 +15,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.3.0",
     "astro": "^6.4.4",
+    "astro-i18n": "^2.2.4",
     "tailwindcss": "^4.3.0"
   },
   "overrides": {
