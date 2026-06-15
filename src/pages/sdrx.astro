@@ -207,7 +207,7 @@ const secretPost = {
             </p>
             
             <p class="text-slate-300 text-xl md:text-2xl leading-relaxed max-w-3xl mb-10">
-                Trabajando en <span class="text-white font-bold tracking-tight"><a href="https://kngura.com" target="_blank">Kngura</a></span>
+                <span data-i18n="sdrx.working">Trabajando</span>
             </p>
 
             <div class="flex flex-wrap gap-4">
@@ -284,9 +284,9 @@ const secretPost = {
                 </div>
             </div>
 
-            <div class="flex flex-col gap-4 max-w-sm mx-auto lg:mx-0 text-center">
-                <div class="flex items-center gap-2 p-2 bg-black border border-white/10 rounded-xl">
-                    <code class="text-[10px] text-sdrx-purple flex-1 px-2 overflow-x-auto whitespace-nowrap scrollbar-hide text-left" id="clone-cmd">git clone https://github.com/Sadrach34/SDRX-Dots.git</code>
+            <div class="flex flex-col gap-4 w-full max-w-sm mx-auto lg:mx-0 text-center">
+                <div class="flex items-center gap-2 p-2 bg-black border border-white/10 rounded-xl overflow-hidden">
+                    <code class="text-[10px] text-sdrx-purple flex-1 px-2 overflow-x-auto whitespace-nowrap scrollbar-hide text-left min-w-0" id="clone-cmd">git clone https://github.com/Sadrach34/SDRX-Dots.git</code>
                     <button class="p-2 hover:bg-white/10 rounded-lg transition-colors group" onclick="copyClone()" title="Copiar comando">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="copy-icon" class="text-sdrx-sky"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
                     </button>
@@ -523,7 +523,7 @@ const secretPost = {
         let task = "Descansando_";
         if (decimalHour >= 7 && decimalHour < 8.5) task = "Despertando & Café_";
         else if (decimalHour >= 8.5 && decimalHour < 9) task = "En camino al trabajo_";
-        else if (decimalHour >= 9 && decimalHour < 17) task = "Trabajando en KNGURA_";
+        else if (decimalHour >= 9 && decimalHour < 17) task = "Procesando_ (En línea)";
         else if (decimalHour >= 17 && decimalHour < 18) task = "Llegando a base & Relax_";
         else if (decimalHour >= 18 && decimalHour < 20) task = "Estudiando Sistemas_";
         else if (decimalHour >= 20 && decimalHour < 22.5) task = "Ocio & Gaming_";
