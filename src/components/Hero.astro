@@ -3,20 +3,92 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
 ---
 <section class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden py-20 px-4">
   <!-- Top Navigation -->
-  <nav class="fixed top-0 left-0 w-full z-50 bg-black/30 backdrop-blur-lg border-b border-white/5 p-4 md:p-6">
+  <nav class="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur-lg border-b border-white/5 px-4 py-3 md:p-6">
     <div class="max-w-7xl mx-auto flex justify-between items-center w-full">
-      <div class="flex items-center gap-3 group cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+      <button type="button" class="flex items-center gap-3 group cursor-pointer" aria-label="Volver al inicio" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
         <img src="/assets/CodeCasters.png" alt="CodeCasters Logo" width="40" class="drop-shadow-[0_0_8px_rgba(74,222,128,0.2)] group-hover:scale-110 transition-transform md:w-[45px]" />
-        <span class="font-bold tracking-tighter text-lg md:text-xl text-white hidden sm:block">Code<span class="text-brand-green">Casters</span></span>
-      </div>
-      <div class="flex gap-4 md:gap-8 items-center">
+        <span class="font-bold tracking-tighter text-lg md:text-xl text-white">Code<span class="text-brand-green">Casters</span></span>
+      </button>
+
+      <div class="hidden md:flex gap-8 items-center">
         <a href="#nosotros" data-i18n="nav.nosotros" class="text-[10px] md:text-sm font-medium text-gray-400 hover:text-brand-green transition-colors uppercase tracking-widest">Nosotros</a>
         <a href="#equipo" data-i18n="nav.equipo" class="text-[10px] md:text-sm font-medium text-gray-400 hover:text-brand-green transition-colors uppercase tracking-widest">Equipo</a>
         <a href="#contacto" data-i18n="nav.contacto" class="text-[10px] md:text-sm font-medium text-gray-400 hover:text-brand-green transition-colors uppercase tracking-widest">Contacto</a>
         <LanguageSwitcher />
       </div>
+
+      <button
+        id="mobile-menu-button"
+        type="button"
+        class="md:hidden grid place-items-center w-11 h-11 rounded-lg border border-white/10 bg-white/5 text-white hover:border-brand-green/50 hover:text-brand-green transition-colors"
+        aria-label="Abrir menú"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+      >
+        <svg class="menu-open-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg class="menu-close-icon hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden max-w-7xl mx-auto pt-3" aria-hidden="true">
+      <div class="flex flex-col gap-1 rounded-xl border border-white/10 bg-black/95 p-3 shadow-2xl">
+        <a href="#nosotros" data-i18n="nav.nosotros" class="mobile-menu-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-brand-green hover:bg-white/5 rounded-lg transition-colors uppercase tracking-widest">Nosotros</a>
+        <a href="#equipo" data-i18n="nav.equipo" class="mobile-menu-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-brand-green hover:bg-white/5 rounded-lg transition-colors uppercase tracking-widest">Equipo</a>
+        <a href="#contacto" data-i18n="nav.contacto" class="mobile-menu-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-brand-green hover:bg-white/5 rounded-lg transition-colors uppercase tracking-widest">Contacto</a>
+        <div class="flex items-center justify-between gap-4 border-t border-white/10 mt-2 pt-3 px-4 py-2">
+          <span data-i18n="nav.language" class="text-xs uppercase tracking-widest text-gray-500">Idioma</span>
+          <LanguageSwitcher />
+        </div>
+      </div>
     </div>
   </nav>
+
+  <script is:inline>
+    function initMobileMenu() {
+      const button = document.getElementById('mobile-menu-button');
+      const menu = document.getElementById('mobile-menu');
+      if (!button || !menu || button.dataset.initialized) return;
+
+      button.dataset.initialized = 'true';
+      const openIcon = button.querySelector('.menu-open-icon');
+      const closeIcon = button.querySelector('.menu-close-icon');
+
+      function setMenuOpen(isOpen) {
+        button.setAttribute('aria-expanded', String(isOpen));
+        button.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+        menu.classList.toggle('hidden', !isOpen);
+        menu.setAttribute('aria-hidden', String(!isOpen));
+        openIcon?.classList.toggle('hidden', isOpen);
+        closeIcon?.classList.toggle('hidden', !isOpen);
+      }
+
+      button.addEventListener('click', () => {
+        setMenuOpen(button.getAttribute('aria-expanded') !== 'true');
+      });
+
+      menu.querySelectorAll('.mobile-menu-link').forEach((link) => {
+        link.addEventListener('click', () => setMenuOpen(false));
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') setMenuOpen(false);
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) setMenuOpen(false);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMobileMenu);
+    } else {
+      initMobileMenu();
+    }
+  </script>
 
   <!-- Background Effects -->
   <div class="absolute inset-0 z-0">

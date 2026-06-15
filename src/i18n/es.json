@@ -6,7 +6,8 @@
   "nav": {
     "nosotros": "Nosotros",
     "equipo": "Equipo",
-    "contacto": "Contacto"
+    "contacto": "Contacto",
+    "language": "Idioma"
   },
   "hero": {
     "title": "CodeCasters",
