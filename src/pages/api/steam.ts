@@ -43,7 +43,13 @@ export const GET: APIRoute = async ({ request }) => {
 
     return new Response(
       JSON.stringify({ gameId, gameName }),
-      { status: 200, headers: { 'Content-Type': 'application/json' } }
+      { 
+        status: 200, 
+        headers: { 
+          'Content-Type': 'application/json',
+          'Cache-Control': 'public, s-maxage=30, stale-while-revalidate=30'
+        } 
+      }
     );
   } catch (error) {
     return new Response(

@@ -531,14 +531,14 @@ const secretPost = {
 
         const taskEl = document.getElementById('current-task');
         if (taskEl) taskEl.innerText = task;
-
-        fetchSteamGame();
     }
 
     setInterval(updateAge, 50);
     setInterval(updateTime, 1000);
+    setInterval(fetchSteamGame, 30000); // Actualizar cada 30 segundos
     updateAge();
     updateTime();
+    fetchSteamGame(); // Carga inicial
 
     let lightboxOpen = false;
     function openLightbox(src, title) {
