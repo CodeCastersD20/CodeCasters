@@ -63,72 +63,128 @@ const secretPost = {
 
 <SDRXLayout title="SDRX | Digital Runtime Experience">
   <!-- Navbar -->
-  <nav class="p-4 md:p-6 fixed top-0 left-0 w-full z-50 bg-[#0a0a0c]/80 backdrop-blur-lg border-b border-white/5">
-      <div class="max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-          <!-- Left: Back link -->
-          <a href="/" class="text-xs md:text-sm font-mono text-slate-500 hover:text-sdrx-sky transition-colors flex items-center gap-2">
+  <nav class="p-3 md:p-6 fixed top-0 left-0 w-full z-50 bg-[#0a0a0c]/90 backdrop-blur-lg border-b border-white/5">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+          <!-- Left: Back link (Always visible) -->
+          <a href="/" class="text-xs md:text-sm font-mono text-slate-400 hover:text-sdrx-sky transition-colors flex items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-            <span data-i18n="sdrx.backLink">Volver a CodeCasters</span>
+            <span data-i18n="sdrx.backLink">Ir a CodeCasters</span>
           </a>
 
-          <!-- Center: Section links + Version -->
-          <div class="flex items-center gap-4 md:gap-6 text-[10px] md:text-xs font-mono uppercase tracking-widest">
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex items-center gap-6 text-xs font-mono uppercase tracking-widest">
             <a href="#sdrx-dots" class="text-slate-400 hover:text-sdrx-sky transition-colors">SDRX-dots</a>
             <a href="#terminal-projects" class="text-slate-400 hover:text-sdrx-sky transition-colors">Terminal</a>
             <a href="#personal" class="text-slate-400 hover:text-sdrx-sky transition-colors">Personal</a>
             <div class="text-slate-600">v1.6.0</div>
+            
+            <div class="flex gap-2 bg-white/5 border border-white/10 rounded-full p-1 ml-4">
+              <button
+                data-lang="es"
+                class="px-3 py-1 text-[10px] font-bold uppercase rounded-full transition-all"
+              >
+                ES
+              </button>
+              <button
+                data-lang="en"
+                class="px-3 py-1 text-[10px] font-bold uppercase rounded-full transition-all"
+              >
+                EN
+              </button>
+            </div>
           </div>
 
-          <!-- Right: Language selector -->
-          <div class="flex gap-2 bg-white/5 border border-white/10 rounded-full p-1">
-            <button
-              data-lang="es"
-              class="px-2 py-0.5 md:px-3 md:py-1 text-[10px] md:text-xs font-bold uppercase rounded-full transition-all active"
-              style="background-color: #00d4ff; color: #0a0a0c;"
-            >
-              ES
-            </button>
-            <button
-              data-lang="en"
-              class="px-2 py-0.5 md:px-3 md:py-1 text-[10px] md:text-xs font-bold uppercase rounded-full transition-all"
-              style="color: #64748b;"
-            >
-              EN
-            </button>
+          <!-- Mobile Menu Button -->
+          <button
+            id="mobile-menu-button"
+            type="button"
+            class="md:hidden grid place-items-center w-10 h-10 rounded-lg border border-white/10 bg-white/5 text-slate-400 hover:border-sdrx-sky/50 hover:text-sdrx-sky transition-colors"
+            aria-label="Abrir menú"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+          >
+            <svg class="menu-open-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg class="menu-close-icon hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden pt-4" aria-hidden="true">
+        <div class="flex flex-col gap-2 rounded-2xl border border-white/10 bg-[#0a0a0c]/fb p-4 shadow-2xl">
+          <a href="#sdrx-dots" class="mobile-menu-link px-4 py-3 text-xs font-mono uppercase tracking-widest text-slate-400 hover:text-sdrx-sky hover:bg-white/5 rounded-xl transition-colors">SDRX-dots</a>
+          <a href="#terminal-projects" class="mobile-menu-link px-4 py-3 text-xs font-mono uppercase tracking-widest text-slate-400 hover:text-sdrx-sky hover:bg-white/5 rounded-xl transition-colors">Terminal</a>
+          <a href="#personal" class="mobile-menu-link px-4 py-3 text-xs font-mono uppercase tracking-widest text-slate-400 hover:text-sdrx-sky hover:bg-white/5 rounded-xl transition-colors">Personal</a>
+          
+          <div class="flex items-center justify-between border-t border-white/10 mt-2 pt-4 px-4">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-slate-500">Idioma / v1.6.0</span>
+            <div class="flex gap-2 bg-white/5 border border-white/10 rounded-full p-1">
+              <button data-lang="es" class="px-3 py-1 text-[10px] font-bold uppercase rounded-full transition-all">ES</button>
+              <button data-lang="en" class="px-3 py-1 text-[10px] font-bold uppercase rounded-full transition-all">EN</button>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Language switcher script -->
+      <!-- Combined Navigation Script -->
       <script is:inline>
-        function initSdrxLangSwitcher() {
-          const buttons = document.querySelectorAll('[data-lang]');
+        function initSdrxNav() {
+          // Language Switcher Logic
+          const langButtons = document.querySelectorAll('[data-lang]');
           const currentLang = localStorage.getItem('site-language') || 'es';
 
-          buttons.forEach(btn => {
+          langButtons.forEach(btn => {
             const lang = btn.getAttribute('data-lang');
             if (lang === currentLang) {
-              btn.classList.add('active');
               btn.style.backgroundColor = '#00d4ff';
               btn.style.color = '#0a0a0c';
             } else {
-              btn.classList.remove('active');
               btn.style.backgroundColor = 'transparent';
               btn.style.color = '#64748b';
             }
 
-            btn.addEventListener('click', () => {
+            btn.addEventListener('click', (e) => {
+              e.stopPropagation();
               localStorage.setItem('site-language', lang);
               location.reload();
             });
           });
+
+          // Mobile Menu Logic
+          const button = document.getElementById('mobile-menu-button');
+          const menu = document.getElementById('mobile-menu');
+          if (!button || !menu) return;
+
+          const openIcon = button.querySelector('.menu-open-icon');
+          const closeIcon = button.querySelector('.menu-close-icon');
+
+          function setMenuOpen(isOpen) {
+            button.setAttribute('aria-expanded', String(isOpen));
+            menu.classList.toggle('hidden', !isOpen);
+            openIcon?.classList.toggle('hidden', isOpen);
+            closeIcon?.classList.toggle('hidden', !isOpen);
+          }
+
+          button.addEventListener('click', () => {
+            setMenuOpen(button.getAttribute('aria-expanded') !== 'true');
+          });
+
+          menu.querySelectorAll('.mobile-menu-link').forEach((link) => {
+            link.addEventListener('click', () => setMenuOpen(false));
+          });
+
+          window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) setMenuOpen(false);
+          });
         }
 
         if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', initSdrxLangSwitcher);
+          document.addEventListener('DOMContentLoaded', initSdrxNav);
         } else {
-          initSdrxLangSwitcher();
+          initSdrxNav();
         }
       </script>
   </nav>
